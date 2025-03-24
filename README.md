@@ -1,2 +1,2 @@
 # CV
-Personal CV website
+Personal CV [website](https://alexklo.github.io/CV/)
