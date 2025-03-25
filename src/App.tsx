@@ -116,7 +116,7 @@ const CVDocument = () => (
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
         <Text style={styles.name}>Aleksei Klochkov</Text>
-        <Text style={styles.title}>Senior Software Engineer</Text>
+        <Text style={styles.title}>Software Engineer</Text>
       </View>
       
       <View style={styles.contactInfo}>
@@ -155,8 +155,16 @@ const CVDocument = () => (
           <Text style={styles.experienceTitle}>Software Developer</Text>
           <Text style={styles.experienceCompany}>Company • 2024 - Present</Text>
           <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
-          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 2</Text>
-          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 3</Text>
+        </View>
+        <View style={styles.experienceItem}>
+          <Text style={styles.experienceTitle}>Julia Software Engineer</Text>
+          <Text style={styles.experienceCompany}>ETMC Exponenta • 2022 - 2024</Text>
+          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
+        </View>
+        <View style={styles.experienceItem}>
+          <Text style={styles.experienceTitle}>Software Engineer</Text>
+          <Text style={styles.experienceCompany}>MARS • 2020 - 2022</Text>
+          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
         </View>
       </View>
 
@@ -170,18 +178,6 @@ const CVDocument = () => (
         </View>
       </View>
 
-      {/* Achievements */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Achievements</Text>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Achievement 1</Text>
-          <Text style={styles.text}>Achievement description</Text>
-        </View>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Achievement 2</Text>
-          <Text style={styles.text}>Achievement description</Text>
-        </View>
-      </View>
     </Page>
   </Document>
 );
@@ -198,7 +194,7 @@ function App() {
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-4xl mx-auto py-6 px-4">
-          <h1 className="text-4xl font-bold text-primary">KLOCHKOV ALEKSEI</h1>
+          <h1 className="text-4xl font-bold text-primary">Aleksei Klochkov</h1>
           <div className="flex justify-between items-center mt-2">
             <p className="text-xl text-secondary">Software Engineer</p>
             <div className="flex space-x-6">
@@ -233,8 +229,20 @@ function App() {
             <p className="text-secondary">Company • 2024 - Present</p>
             <ul className="mt-4 list-disc list-inside text-secondary">
               <li>Achievement 1</li>
-              <li>Achievement 2</li>
-              <li>Achievement 3</li>
+            </ul>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h3 className="text-xl font-semibold">Julia Software Developer</h3>
+            <p className="text-secondary">ETMC Exponenta • 2022 - 2024</p>
+            <ul className="mt-4 list-disc list-inside text-secondary">
+              <li>Achievement 1</li>
+            </ul>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <h3 className="text-xl font-semibold">Software Developer</h3>
+            <p className="text-secondary">MARS • 2020 - 2022</p>
+            <ul className="mt-4 list-disc list-inside text-secondary">
+              <li>Achievement 1</li>
             </ul>
           </div>
         </div>
@@ -247,21 +255,6 @@ function App() {
           <h3 className="text-xl font-semibold">Bauman Moscow State Technical University</h3>
           <p className="text-secondary">Bachelor's degree • 2014 - 2018</p>
           <p className="text-secondary">Masters's degree • 2018 - 2020</p>
-        </div>
-      </section>
-
-      {/* Achievements */}
-      <section className="section">
-        <h2 className="section-title">Achievements</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold">Achievement 1</h3>
-            <p className="text-secondary mt-2">Achievement description</p>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold">Achievement 2</h3>
-            <p className="text-secondary mt-2">Achievement description</p>
-          </div>
         </div>
       </section>
 
