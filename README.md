@@ -1,2 +1,0 @@
-# CV
-Personal CV website
