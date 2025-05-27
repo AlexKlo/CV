@@ -110,6 +110,32 @@ const EmailIcon = () => (
   </Svg>
 );
 
+// Выносим тексты и данные в отдельные переменные для избежания дублирования
+const aboutMeText = [
+  "A tech-savvy software engineer with experience across quality assurance, mathematical modeling and software development (Julia, Python, C/C++). Passionate about robust systems and data-driven solutions."
+];
+
+const experienceData = [
+  { title: "Software Developer", company: "Company", period: "2024 - Present", achievements: [
+    "Developing parsing and serialization tools, and API clients (HTTP, WebSocket, gRPC) in Julia"
+  ] },
+  { title: "Julia Software Engineer", company: "ETMC Exponenta", period: "2022 - 2024", achievements: [
+    "Optimized the computational core of a technical process simulation system in Julia",
+    "Improved simulation performance by over 3.5×"
+  ]},
+  { title: "Software Engineer", company: "MARS", period: "2020 - 2022", achievements: [
+    "Fully automated satellite flight mode testing processes",
+    "Reduced flight mode processing time by over 2×"
+  ]}
+];
+
+const educationData = [
+  { school: "Bauman Moscow State Technical University", degrees: [
+    { degree: "Bachelor's degree in Applied Mathematics", period: "2014 - 2018" },
+    { degree: "Master's degree in Applied Mathematics", period: "2018 - 2020" }
+  ]}
+];
+
 // PDF component
 const CVDocument = () => (
   <Document>
@@ -143,41 +169,37 @@ const CVDocument = () => (
       {/* About */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>About Me</Text>
-        <Text style={styles.text}>
-        A tech-savvy software engineer with experience across quality assurance, mathematical modeling and software development (Julia, Python, C/C++).
-        </Text>
+        {aboutMeText.map((text, i) => (
+          <Text style={styles.text} key={i}>{text}</Text>
+        ))}
       </View>
 
       {/* Experience */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Experience</Text>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Software Developer</Text>
-          <Text style={styles.experienceCompany}>Company • 2024 - Present</Text>
-          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
-        </View>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Julia Software Engineer</Text>
-          <Text style={styles.experienceCompany}>ETMC Exponenta • 2022 - 2024</Text>
-          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
-        </View>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Software Engineer</Text>
-          <Text style={styles.experienceCompany}>MARS • 2020 - 2022</Text>
-          <Text style={[styles.text, styles.bulletPoint]}>• Achievement 1</Text>
-        </View>
+        {experienceData.map((exp, i) => (
+          <View style={styles.experienceItem} key={i}>
+            <Text style={styles.experienceTitle}>{exp.title}</Text>
+            <Text style={styles.experienceCompany}>{exp.company} • {exp.period}</Text>
+            {exp.achievements.map((achievement, j) => (
+              <Text style={[styles.text, styles.bulletPoint]} key={j}>• {achievement}</Text>
+            ))}
+          </View>
+        ))}
       </View>
 
       {/* Education */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Education</Text>
-        <View style={styles.experienceItem}>
-          <Text style={styles.experienceTitle}>Bauman Moscow State Technical University</Text>
-          <Text style={styles.experienceCompany}>Bachelor's degree • 2014 - 2018</Text>
-          <Text style={styles.experienceCompany}>Master's degree • 2018 - 2020</Text>
-        </View>
+        {educationData.map((edu, i) => (
+          <View style={styles.experienceItem} key={i}>
+            <Text style={styles.experienceTitle}>{edu.school}</Text>
+            {edu.degrees.map((deg, j) => (
+              <Text style={styles.experienceCompany} key={j}>{deg.degree} • {deg.period}</Text>
+            ))}
+          </View>
+        ))}
       </View>
-
     </Page>
   </Document>
 );
@@ -215,36 +237,26 @@ function App() {
       {/* About */}
       <section className="section">
         <h2 className="section-title">About Me</h2>
-        <p className="text-secondary leading-relaxed">
-        tech-savvy software engineer with experience across quality assurance, mathematical modeling and software development (Julia, Python, C/C++).
-        </p>
+        {aboutMeText.map((text, i) => (
+          <p className="text-secondary leading-relaxed mt-2" key={i}>{text}</p>
+        ))}
       </section>
 
       {/* Experience */}
       <section className="section">
         <h2 className="section-title">Experience</h2>
         <div className="space-y-6">
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold">Software Developer</h3>
-            <p className="text-secondary">Company • 2024 - Present</p>
-            <ul className="mt-4 list-disc list-inside text-secondary">
-              <li>Achievement 1</li>
-            </ul>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold">Julia Software Developer</h3>
-            <p className="text-secondary">ETMC Exponenta • 2022 - 2024</p>
-            <ul className="mt-4 list-disc list-inside text-secondary">
-              <li>Achievement 1</li>
-            </ul>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm">
-            <h3 className="text-xl font-semibold">Software Developer</h3>
-            <p className="text-secondary">MARS • 2020 - 2022</p>
-            <ul className="mt-4 list-disc list-inside text-secondary">
-              <li>Achievement 1</li>
-            </ul>
-          </div>
+          {experienceData.map((exp, i) => (
+            <div className="bg-white p-6 rounded-lg shadow-sm" key={i}>
+              <h3 className="text-xl font-semibold">{exp.title}</h3>
+              <p className="text-secondary">{exp.company} • {exp.period}</p>
+              <ul className="mt-4 list-disc list-inside text-secondary">
+                {exp.achievements.map((achievement, j) => (
+                  <li key={j}>{achievement}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -252,9 +264,14 @@ function App() {
       <section className="section">
         <h2 className="section-title">Education</h2>
         <div className="bg-white p-6 rounded-lg shadow-sm">
-          <h3 className="text-xl font-semibold">Bauman Moscow State Technical University</h3>
-          <p className="text-secondary">Bachelor's degree • 2014 - 2018</p>
-          <p className="text-secondary">Masters's degree • 2018 - 2020</p>
+          {educationData.map((edu, i) => (
+            <div key={i}>
+              <h3 className="text-xl font-semibold">{edu.school}</h3>
+              {edu.degrees.map((deg, j) => (
+                <p className="text-secondary" key={j}>{deg.degree} • {deg.period}</p>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
